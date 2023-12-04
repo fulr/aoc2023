@@ -63,20 +63,20 @@ defmodule Day03 do
   @doc """
   ## Examples
     iex> Day03.part2()
-    67953
+    80403602
   """
   def part2 do
     {parts, numbers} =
       File.read!("input03.txt")
       |> String.split("\n")
-      |> Enum.filter(fn s -> String.length(s) > 0 end)
+      |> Enum.filter(&(String.length(&1) > 0))
       |> Enum.map(&analyse/1)
       |> Enum.with_index()
       |> Enum.flat_map(fn {l, nr} -> Enum.map(l, fn t -> Map.put(t, :line, nr) end) end)
-      |> Enum.split_with(fn %{type: t} -> t == :part end)
+      |> Enum.split_with(&(&1.type == :part))
 
     parts
-    |> Enum.filter(fn %{value: v} -> v == ?* end)
+    |> Enum.filter(&(&1.value == ?*))
     |> Enum.map(fn %{pos: pos, line: line} ->
       Enum.filter(numbers, fn %{start: start, stop: stop, line: l} ->
         pos in (start - 1)..(stop + 1) && l in (line - 1)..(line + 1)
