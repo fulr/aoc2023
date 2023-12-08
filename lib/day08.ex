@@ -2,7 +2,7 @@ defmodule Day08 do
   @doc """
   ## Examples
     iex> Day08.part1()
-    2278
+    12169
   """
   def part1 do
     [inst, network] =
@@ -35,7 +35,7 @@ defmodule Day08 do
   @doc """
   ## Examples
     iex> Day08.part2()
-    80408602
+    12030780859469
   """
   def part2 do
     [inst, network] =
