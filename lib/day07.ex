@@ -73,22 +73,22 @@ defmodule Day07 do
     |> Enum.map(fn x ->
       [card, bid] = String.split(x)
 
-      t=if card == "JJJJJ" do
-        [5]
-      else
-        all =
-          card
-          |> String.codepoints()
-          |> Enum.frequencies()
+      t =
+        if card == "JJJJJ" do
+          [5]
+        else
+          all =
+            card
+            |> String.codepoints()
+            |> Enum.frequencies()
 
-        {j, rest} = Map.pop(all, "J", 0)
-        {k, v} = Enum.max_by(rest, fn {_, v} -> v end)
+          {j, rest} = Map.pop(all, "J", 0)
+          {k, v} = Enum.max_by(rest, fn {_, v} -> v end)
 
-        
           Map.put(rest, k, v + j)
           |> Map.values()
           |> Enum.sort(:desc)
-      end
+        end
 
       v =
         card |> String.codepoints() |> Enum.map(&card_order_map[&1])
