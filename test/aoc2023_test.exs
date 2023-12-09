@@ -7,5 +7,6 @@ defmodule Aoc2023Test do
   # doctest Day05
   # doctest Day06
   # doctest Day07
-  doctest Day08
+  # doctest Day08
+  doctest Day09
 end
